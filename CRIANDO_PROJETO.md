@@ -34,3 +34,11 @@ npm run typeorm migration:create -- -n createProductsTable
 npm run typeorm migration:run
 
 ```
+
+## Nest commandos
+
+# cria um novo controller
+```bash
+# cria um novo controller
+nest generate controller controllers/product
+```
