@@ -1,0 +1,34 @@
+@hostname = localhost:3000
+
+###
+GET http://{{hostname}}/products/11
+
+###
+GET http://{{hostname}}/products
+
+###
+POST http://{{hostname}}/products
+Content-Type: application/json
+
+{
+    "name" : "NVIDIA GeForce GTX 1050 Ti",
+    "price": 1529.29
+}
+
+###
+POST http://{{hostname}}/products
+Content-Type: application/json
+
+{
+    "name": "MSI NVIDIA GeForce GTX 1650",
+    "price": 1999.88
+}
+
+###
+POST http://{{hostname}}/products
+Content-Type: application/json
+
+{
+    "name": "Asus NVIDIA GeForce GTX 1050 Ti",
+    "price": 1952.82
+}
