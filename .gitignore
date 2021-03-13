@@ -32,3 +32,17 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+api/docker/dbdata/auto.cnf
+api/docker/dbdata/ca-key.pem
+api/docker/dbdata/ca.pem
+api/docker/dbdata/client-cert.pem
+api/docker/dbdata/client-key.pem
+api/docker/dbdata/ib_buffer_pool
+api/docker/dbdata/ib_logfile0
+api/docker/dbdata/ib_logfile1
+api/docker/dbdata/ibdata1
+api/docker/dbdata/ibtmp1
+api/docker/dbdata/private_key.pem
+api/docker/dbdata/public_key.pem
+api/docker/dbdata/server-cert.pem
+api/docker/dbdata/server-key.pem
