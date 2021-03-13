@@ -1,7 +1,7 @@
 @hostname = localhost:3000
 
 ###
-GET http://{{hostname}}/products/11
+GET http://{{hostname}}/products/13
 
 ###
 GET http://{{hostname}}/products
@@ -32,3 +32,16 @@ Content-Type: application/json
     "name": "Asus NVIDIA GeForce GTX 1050 Ti",
     "price": 1952.82
 }
+
+###
+PUT http://localhost:3000/products/13
+Content-Type: application/json
+
+{
+    "name": "Asus NVIDIA GeForce GTX 1050 Ti",
+    "price": 1999.90
+}
+
+
+###
+DELETE http://localhost:3000/products/13
