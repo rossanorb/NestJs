@@ -22,7 +22,7 @@ services:
         ports:
             - "3306:3306"
         volumes:
-            - "./api/docker/dbdata:/var/lib/mysql"        
+            - "./.docker/dbdata:/var/lib/mysql"        
         environment:
             MYSQL_DATABASE: nest_api
             MYSQL_ROOT_PASSWORD: 102030 
