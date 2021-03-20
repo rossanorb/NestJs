@@ -3,14 +3,27 @@ import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn} from "typeorm"
 @Entity({name: 'products'})
 export class Product {
     @PrimaryGeneratedColumn()
-    id: number;
+    public id: number;
 
     @Column()
-    name: string;
+    public name: string;
 
     @Column()
-    price: number;
+    public price: number;
 
     @CreateDateColumn({type: 'timestamp'})
-    created_at: Date;
+    public created_at: Date;
+
+    public static of(params: Partial<Product>): Product {
+        const product = new Product();
+    
+        Object.assign(product, params);
+    
+        return product;
+    }
+}
+
+export class ProductRepositoryFake {
+    public async findAll(): Promise<void> {}
+    public async findOne(): Promise<void> {}
 }
