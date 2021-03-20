@@ -11,7 +11,7 @@ export class ProductService {
         private productRepository: Repository<Product>
     ) { }
 
-    public async find(): Promise<Product[]> {
+    public async findAll(): Promise<Product[]> {
         return await this.productRepository.find();
     }
 

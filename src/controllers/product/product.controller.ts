@@ -8,7 +8,7 @@ export class ProductController {
 
     @Get()
     index() {
-        return this.productService.find();
+        return this.productService.findAll();
     }
 
 }
