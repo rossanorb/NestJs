@@ -37,10 +37,27 @@ describe('ProductService', () => {
                 expect(e.message).toBe('No product found.');
             }
 
-            expect(productRepositoryFindOneSpy).toHaveBeenCalledWith(999999);
-
-            
+            expect(productRepositoryFindOneSpy).toHaveBeenCalledWith(999999);            
         });
+
+        it('returns the found product', async () => {
+            const ID = 4;
+            const PRICE = 999.99;
+
+            const existingProduct = Product.of({
+                id:ID,
+                name:'Product Teste',
+                price: PRICE,
+                created_at: new Date(),
+            });
+
+            const productRepositoryFindOneSpy = jest.spyOn(producttRepository, 'findOne').mockResolvedValue(existingProduct);
+            const result = await productService.find(ID);
+
+            expect(result).toBe(existingProduct);
+            expect(productRepositoryFindOneSpy).toHaveBeenCalledWith(ID);
+
+        })
 
     })
 

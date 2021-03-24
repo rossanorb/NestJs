@@ -3,6 +3,11 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from './../../models/product';
 import { Repository } from 'typeorm';
 
+export interface ICreateProductData {
+    name:string,
+    price:number
+}
+
 @Injectable()
 export class ProductService {
 
@@ -23,6 +28,11 @@ export class ProductService {
         }
 
         return product;
+    }
+
+    public async create(ICreateProductData: ICreateProductData): Promise<Product> {
+        const product = this.productRepository.create(ICreateProductData);
+        return this.productRepository.save(product);
     }
 
 }
