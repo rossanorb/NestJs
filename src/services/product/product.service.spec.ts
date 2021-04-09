@@ -2,12 +2,12 @@ import { BadRequestException, NotFoundException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { ProductService } from './product.service';
-import { Repository } from 'typeorm';
+import { Repository, SimpleConsoleLogger } from 'typeorm';
 import { Product, ProductRepositoryFake } from './../../models/product';
 
 describe('ProductService', () => {
     let productService: ProductService;
-    let producttRepository: Repository<Product>;
+    let productRepository: Repository<Product>;
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
@@ -21,25 +21,30 @@ describe('ProductService', () => {
         }).compile();
 
         productService = module.get(ProductService);
-        producttRepository = module.get(getRepositoryToken(Product));
+        productRepository = module.get(getRepositoryToken(Product));
     });
 
-    describe('finding a product', () => {
+    describe('find product', () => {
 
         it('throws an error when a product doesnt exist', async () => {
-            const productRepositoryFindOneSpy = jest.spyOn(producttRepository, 'findOne').mockResolvedValue(null);
-            expect.assertions(3);
 
-            try {
-                await productService.find(999999);
-            } catch (e) {
-                expect(e).toBeInstanceOf(NotFoundException);
-                expect(e.message).toBe('No product found.');
-            }
+            const existingProduct = Product.of(
+                {
+                    id: 1,
+                    name: "NVIDIA GeForce GTX 1050 Ti",
+                    price: 1250.00
+                }
+            )
 
-            expect(productRepositoryFindOneSpy).toHaveBeenCalledWith(999999);
+            const productRepositoryFindOneSpy = jest
+                .spyOn(productRepository, 'findOne')
+                .mockResolvedValue(existingProduct);
 
-            
+            const result = await productService.find(1);
+
+            expect(result).toBe(existingProduct);
+
+
         });
 
     })

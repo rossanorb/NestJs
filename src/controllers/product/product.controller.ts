@@ -1,4 +1,5 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, NotFoundException } from '@nestjs/common';
+import { Product } from '../../models/product';
 import { ProductService } from '../../services/product/product.service';
 
 @Controller('products')
@@ -12,8 +13,15 @@ export class ProductController {
     }
 
     @Get(':id')
-    show(@Param() id: number) {
-        return this.productService.find(id);
+    async show(@Param() id: number): Promise<Product> {
+        const product = await this.productService.find(id);
+
+        if (product instanceof Product) {
+            return product;
+        }
+
+        return product;
+
     }
 
 }
