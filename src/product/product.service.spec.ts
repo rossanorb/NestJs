@@ -10,20 +10,7 @@ describe('ProductService', () => {
 
     beforeEach(async () => {
 
-        const mockRepository = jest.fn(() => ([
-            {
-                "id": 1,
-                "name": "NVIDIA GeForce GTX 1050 Ti",
-                "price": 152929,
-                "created_at": "2021-04-18T15:41:25.771Z"
-            },
-            {
-                "id": 2,
-                "name": "MSI NVIDIA GeForce GTX 1650",
-                "price": 199988,
-                "created_at": "2021-04-18T15:41:43.916Z"
-            }
-        ]));
+        const mockRepository = jest.fn();
 
         const module: TestingModule = await Test.createTestingModule({
             providers: [
