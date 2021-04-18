@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { ProductModule } from './modules/product.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { entities } from './models/database.entities';
 import { ConfigModule } from '@nestjs/config';
+import { ProductModule } from './product/product.module';
 
 @Module({
     imports: [
