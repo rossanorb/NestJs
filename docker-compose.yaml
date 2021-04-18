@@ -12,6 +12,8 @@ services:
             - 3000:3000
         volumes:
             - .:/home/node/app
+        depends_on:
+            - mysql
 
     mysql:
         container_name: "nest_mysql"
@@ -24,6 +26,5 @@ services:
             - "./.docker/dbdata:/var/lib/mysql"
         environment:
             MYSQL_DATABASE: nest_api
-            MYSQL_ROOT_PASSWORD: 102030
-            MYSQL_USER: root
-            MYSQL_PASSWORD: 102030
+            MYSQL_ROOT_USER: root
+            MYSQL_ROOT_PASSWORD: root
