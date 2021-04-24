@@ -15,13 +15,6 @@ export class ProductController {
 
     @Get(':id')
     async show(@Param() id: number): Promise<Product> {
-        const product = await this.productService.find(id);
-
-        if (product instanceof Product) {
-            return product;
-        }
-
-        return product;
-
+        return await this.productService.find(id);
     }
 }
