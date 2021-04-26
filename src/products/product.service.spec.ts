@@ -36,11 +36,25 @@ describe('ProductService', () => {
     });
 
     describe('finding a Product', () => {
-
+        
         it('returns not found when a product doesnt exist', async() => {
+            const ID = 1;
+
             await expect(
-                service.find(1)
-            ).rejects.toThrow(new NotFoundException(`Product not found`));
+                service.find(ID)
+            ).rejects.toBeInstanceOf(NotFoundException);
+
+            await expect(
+                service.find(ID)
+            ).rejects.toThrow(new NotFoundException(`Product #${ID} not found`));
+
+
+            // try {
+            //     await service.find(ID);
+            // } catch (e) {
+            //     expect(e).toBeInstanceOf(NotFoundException);
+            //     expect(e.message).toBe(`Product #${ID} not found`);
+            // }
 
         });
 
