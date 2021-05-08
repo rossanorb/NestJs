@@ -39,6 +39,7 @@ describe('ProductService', () => {
         
         it('returns not found when a product doesnt exist', async() => {
             const ID = 1;
+            expect.assertions(4);
 
             await expect(
                 service.find(ID)
@@ -55,6 +56,20 @@ describe('ProductService', () => {
             //     expect(e).toBeInstanceOf(NotFoundException);
             //     expect(e.message).toBe(`Product #${ID} not found`);
             // }
+            
+            const existingProduct = Product.of({
+                id: ID,
+                name: "NVIDIA GeForce GTX 1050 Ti",
+                price: 152929,
+                created_at:  new Date("2021-04-18T15:41:25.771Z")                                      
+            });         
+
+            const productRepositoryFindOneSpy = jest.spyOn(productRepository, 'findOne')
+                    .mockResolvedValue(existingProduct);
+
+            const result = await service.find(ID);
+            expect(result).toBe(existingProduct);
+            expect(productRepositoryFindOneSpy).toHaveBeenCalledWith(ID);
 
         });
 

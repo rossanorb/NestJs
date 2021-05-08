@@ -19,7 +19,7 @@ import { ProductModule } from './products/product.module';
             password: process.env.TYPEORM_PASSWORD,
             database: process.env.TYPEORM_DATABASE,
             entities: entities,
-            synchronize: true,
+            synchronize: false,
           }),
         ProductModule
     ],

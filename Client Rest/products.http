@@ -1,7 +1,7 @@
 @hostname = localhost:3000
 
 ###
-GET http://{{hostname}}/products/13
+GET http://{{hostname}}/products/1
 
 ###
 GET http://{{hostname}}/products
