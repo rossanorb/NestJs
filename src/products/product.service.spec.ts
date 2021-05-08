@@ -37,9 +37,9 @@ describe('ProductService', () => {
 
     describe('finding a Product', () => {
         
-        it('returns not found when a product doesnt exist', async() => {
+        it('returns not found when a product doesnt exists', async() => {
             const ID = 1;
-            expect.assertions(4);
+            expect.assertions(2);
 
             await expect(
                 service.find(ID)
@@ -56,7 +56,14 @@ describe('ProductService', () => {
             //     expect(e).toBeInstanceOf(NotFoundException);
             //     expect(e.message).toBe(`Product #${ID} not found`);
             // }
-            
+
+        });
+
+        it('returns found when a product exists', async() => {
+            const ID = 1;
+
+            expect.assertions(2);
+
             const existingProduct = Product.of({
                 id: ID,
                 name: "NVIDIA GeForce GTX 1050 Ti",
@@ -70,8 +77,8 @@ describe('ProductService', () => {
             const result = await service.find(ID);
             expect(result).toBe(existingProduct);
             expect(productRepositoryFindOneSpy).toHaveBeenCalledWith(ID);
-
         });
+
 
     });
 

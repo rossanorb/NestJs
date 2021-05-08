@@ -22,7 +22,7 @@ export class ProductService {
             return product;
         }
 
-        throw new NotFoundException(`Product #${id} not found`);
+        throw new NotFoundException(`Product #${+id} not found`);
     }    
 
 }
